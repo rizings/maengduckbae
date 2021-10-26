@@ -1,0 +1,35 @@
+class Car
+{
+	private String type;
+	private int speed;
+	Car(String type, int speed)
+	{
+		this.type = type;
+		if(0 <= speed && speed <= 200)
+		{
+			this.speed = speed;
+		}
+		else //잘못된 입력이므로 0으로 대신 초기화
+		{
+			this.speed = 0; 
+		}	
+	}
+	Car(String type)
+	{
+		this(type, 0);
+	}
+	void Acc(){
+		if(speed >= 200) //속도가 200 이상이면 가속금지
+		{
+			return;
+		}
+		speed += 10;
+	}
+	void Break(){
+		speed -= 20;
+		if(speed <= 0)
+		{
+			speed = 0;
+		}
+	}
+}

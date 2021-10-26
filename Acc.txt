@@ -1,0 +1,64 @@
+
+class Account
+{
+	String no, name, pw;
+	int bal;
+	void deposit(int amnt)
+	{
+		bal += amnt;
+	}
+	int withraw(int amnt, String p)
+	{
+		if(pw != p) //전달된 비밀번호가 틀렸다면?
+		{
+			System.out.println("비밀번호가 틀렸습니다.");
+			return 0;
+		}
+		if(bal < amnt)
+		{
+			return 0;
+		}
+		bal -= amnt;
+		return amnt;
+	}
+	void show(String p)
+	{
+		if(pw == p)
+		{
+			System.out.println(name + "님의 잔액 : " + bal);
+		}
+		else
+		{
+			System.out.println("비밀번호가 틀렸습니다.");
+		}
+	}
+	
+}
+
+public class AccountExam {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Account acc1 = new Account();//객체화, 실체화, 인스턴스화 작업
+		//객체화 작업에는 new가 사용된다.
+		//객체화 되지않은 객체는 사용불가능.
+		//new 키워드는 객체를 포함한 모든 레퍼런스타입을 객체화하는데 사용된다.
+		
+		acc1.bal = 10000;
+		acc1.name = "홍길동";
+		acc1.no = "1234-1234";
+		acc1.pw = "1234";
+		
+		Account acc2 = new Account();
+		acc2.bal = 20000;
+		acc2.name = "장용훈";
+		acc2.no = "4321-4321";
+		acc2.pw = "4321";
+		
+		int money = acc1.withraw(5000, "1234");
+		acc2.deposit(money);
+		acc1.show("1234");
+		acc2.show("4321");
+	}
+
+}
